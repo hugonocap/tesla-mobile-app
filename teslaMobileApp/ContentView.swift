@@ -11,10 +11,13 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             ScrollView{
-                // home header
-                HomeHeader()
-                    .padding()
-                
+                VStack(spacing: 20){
+                    // home header
+                    HomeHeader()
+                    CustomDivider()
+                    CarSection()
+                    CustomDivider()
+                }.padding()
             }
             // voice command button
             VoiceCommandButton()
@@ -91,5 +94,41 @@ struct GeneralButton: View {
             .background(.white.opacity(0.05))
             .clipShape(Circle())
             .overlay(Circle().stroke(.white.opacity(0.1), lineWidth: 0.5 ))
+    }
+}
+
+struct CustomDivider: View {
+    var body: some View {
+        Rectangle()
+            .frame(maxWidth: .infinity)
+            .frame(height: 0.25)
+            .background(.white)
+            .opacity(0.1)
+    }
+}
+
+struct CarSection: View {
+    var body: some View {
+        VStack(spacing: 10) {
+            HStack(alignment: .center) {
+                HStack {
+                    Image(systemName: "battery.75")
+                    Text("237 miles".uppercased())
+                }
+                .foregroundColor(Color("Green"))
+                .font(.system(size: 14, weight: .semibold, design: .rounded))
+                Spacer()
+                VStack(alignment: .trailing) {
+                    Text("Parked")
+                        .fontWeight(.semibold)
+                    Text("Last updated: 5 min ago")
+                        .font(.caption2)
+                        .foregroundColor(.gray)
+                }
+            }
+            Image("teslaCar1")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        }
     }
 }
