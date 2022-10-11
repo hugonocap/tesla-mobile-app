@@ -14,6 +14,7 @@ struct ContentView: View {
                 // home header
                 HomeHeader()
                     .padding()
+                
             }
             // voice command button
             VoiceCommandButton()
@@ -72,7 +73,23 @@ struct HomeHeader: View {
                     .fontWeight(.semibold)
             }
             Spacer()
+            HStack {
+                GeneralButton(icon: "lock.fill")
+                GeneralButton(icon: "gear")
+            }
         }
         .padding()
+    }
+}
+
+struct GeneralButton: View {
+    var icon: String
+    var body: some View {
+        Image(systemName: icon)
+            .imageScale(.large)
+            .frame(width: 44, height: 44)
+            .background(.white.opacity(0.05))
+            .clipShape(Circle())
+            .overlay(Circle().stroke(.white.opacity(0.1), lineWidth: 0.5 ))
     }
 }
