@@ -17,10 +17,12 @@ struct ContentView: View {
                     CustomDivider()
                     CarSection()
                     CustomDivider()
-                    CategoryView(title: "Quick shortcuts", showEdit: true, actionItems: quickShortcuts)
-                    CustomDivider()
-                    CategoryView(title: "Recent actions", showEdit: false, actionItems: recentActions)
-                    CustomDivider()
+//                    CategoryView(title: "Quick shortcuts", showEdit: true, actionItems: quickShortcuts)
+//                    CustomDivider()
+//                    CustomDivider()
+//                    CategoryView(title: "Recent actions", showEdit: false, actionItems: recentActions)
+//                    CustomDivider()
+                    AllSettings()
                     
                 }.padding()
             }
@@ -39,8 +41,6 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-
- 
 // voice button struct
 struct VoiceCommandButton: View {
     var body: some View {
@@ -221,3 +221,49 @@ let recentActions: [ActionItem] = [
     ActionItem(icon: "fanblades", text: "Fan Off"),
     ActionItem(icon: "person.fill.viewfinder", text: "Summon"),
 ]
+
+struct AllSettings: View {
+    var body: some View {
+        VStack {
+            CategoryHeader(title: "All Settings")
+            LazyVGrid(columns: [GridItem(.fixed(170)), GridItem(.fixed(170))]) {
+                SettingsBlock(icon: "car.fill", title: "Controls")
+                SettingsBlock(icon: "fanblades.fill", title: "Climate",
+                              subtitle: "INTERIOR 68° F",
+                              backgroundColor: Color("Blue"))
+                SettingsBlock(icon: "location.fill", title: "Location",
+                              subtitle: "EMPIRE STATE BUILDING")
+                SettingsBlock(icon: "checkerboard.shield", title: "Privacy",
+                              subtitle: "0 EVENTS DETECTED")
+                SettingsBlock(icon: "sparkles", title: "Upgrades",
+                              subtitle: "3 UPGRADES AVAILABLE")
+            }
+        }
+    }
+}
+
+struct SettingsBlock: View {
+    
+    var icon: String
+    var title: String
+    var subtitle: String = ""
+    var backgroundColor: Color = .white.opacity(0.05)
+    
+    var body: some View {
+        HStack {
+            Image(systemName: icon)
+            VStack(alignment: .leading) {
+                Text(title)
+                if !subtitle.isEmpty {
+                    Text(subtitle)
+                }
+            }
+            Spacer()
+            Image(systemName: "chevron.right")
+        }
+        .padding()
+        .background(backgroundColor)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .overlay(RoundedRectangle(cornerRadius: 16).stroke(.white.opacity(0.1)))
+    }
+}
