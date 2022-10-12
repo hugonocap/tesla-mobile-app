@@ -17,6 +17,11 @@ struct ContentView: View {
                     CustomDivider()
                     CarSection()
                     CustomDivider()
+                    CategoryView(title: "Quick shortcuts", showEdit: true)
+                    CustomDivider()
+                    CategoryView(title: "Recent actions", showEdit: false)
+                    CustomDivider()
+                    
                 }.padding()
             }
             // voice command button
@@ -77,14 +82,18 @@ struct HomeHeader: View {
             }
             Spacer()
             HStack {
-                GeneralButton(icon: "lock.fill")
-                GeneralButton(icon: "gear")
+                Button(action: {}) {
+                    GeneralButton(icon: "lock.fill")
+                }
+                Button(action: {}) {
+                    GeneralButton(icon: "gear")
+                }
             }
         }
         .padding()
     }
 }
-
+// general buttons struct
 struct GeneralButton: View {
     var icon: String
     var body: some View {
@@ -96,7 +105,7 @@ struct GeneralButton: View {
             .overlay(Circle().stroke(.white.opacity(0.1), lineWidth: 0.5 ))
     }
 }
-
+// custom divider struct
 struct CustomDivider: View {
     var body: some View {
         Rectangle()
@@ -106,7 +115,7 @@ struct CustomDivider: View {
             .opacity(0.1)
     }
 }
-
+// car section struct
 struct CarSection: View {
     var body: some View {
         VStack(spacing: 10) {
@@ -129,6 +138,68 @@ struct CarSection: View {
             Image("teslaCar1")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+        }
+    }
+}
+
+struct CategoryHeader: View {
+    
+    var title: String
+    var showEdit: Bool = false
+    
+    var body: some View {
+        VStack(alignment: .center) {
+            HStack {
+                Text(title)
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                Spacer()
+                if showEdit {
+                    Button(action: {}) {
+                        Text("Edit")
+                            .foregroundColor(.gray)
+                            .fontWeight(.medium)
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+struct CategoryView: View {
+        
+    var title: String
+    var showEdit: Bool
+        
+    var body: some View {
+        VStack {
+            CategoryHeader(title: title, showEdit: true)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(alignment: .top){
+                    ActionButton(icon: "bolt.fill", text: "charging")
+                    ActionButton(icon: "fanblades.fill", text: "Fan On")
+                    ActionButton(icon: "music.note", text: "Media Controls")
+                    ActionButton(icon: "bolt.car", text: "Close Charge Port")
+                }
+            }
+            
+        }
+    }
+}
+
+
+struct ActionButton: View {
+    
+    var icon: String
+    var text: String
+    
+    var body: some View {
+        VStack(alignment: .center) {
+            GeneralButton(icon: icon)
+            Text(text)
+                .font(.system(size: 12, weight: .semibold, design: .default))
+                .frame(width: 72)
+                .multilineTextAlignment(.center)
         }
     }
 }
