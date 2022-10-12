@@ -17,9 +17,9 @@ struct ContentView: View {
                     CustomDivider()
                     CarSection()
                     CustomDivider()
-                    CategoryView(title: "Quick shortcuts", showEdit: true)
+                    CategoryView(title: "Quick shortcuts", showEdit: true, actionItems: quickShortcuts)
                     CustomDivider()
-                    CategoryView(title: "Recent actions", showEdit: false)
+                    CategoryView(title: "Recent actions", showEdit: false, actionItems: recentActions)
                     CustomDivider()
                     
                 }.padding()
@@ -170,16 +170,17 @@ struct CategoryView: View {
         
     var title: String
     var showEdit: Bool
+    
+    var actionItems: [ActionItem]
         
     var body: some View {
         VStack {
             CategoryHeader(title: title, showEdit: true)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top){
-                    ActionButton(icon: "bolt.fill", text: "charging")
-                    ActionButton(icon: "fanblades.fill", text: "Fan On")
-                    ActionButton(icon: "music.note", text: "Media Controls")
-                    ActionButton(icon: "bolt.car", text: "Close Charge Port")
+                    ForEach(actionItems, id:\.self) { item in
+                        ActionButton(item: item)
+                    }
                 }
             }
             
@@ -190,16 +191,33 @@ struct CategoryView: View {
 
 struct ActionButton: View {
     
-    var icon: String
-    var text: String
+    var item: ActionItem
     
     var body: some View {
         VStack(alignment: .center) {
-            GeneralButton(icon: icon)
-            Text(text)
+            GeneralButton(icon: item.icon)
+            Text(item.text)
                 .font(.system(size: 12, weight: .semibold, design: .default))
                 .frame(width: 72)
                 .multilineTextAlignment(.center)
         }
     }
 }
+
+struct ActionItem: Hashable {
+    var icon: String
+    var text: String
+}
+
+let quickShortcuts: [ActionItem] = [
+    ActionItem(icon: "bolt.fill", text: "Charging"),
+    ActionItem(icon: "fanblades.fill", text: "Fan On"),
+    ActionItem(icon: "music.note", text: "Media controls"),
+    ActionItem(icon: "bolt.car", text: "Close Charge Port")
+]
+
+let recentActions: [ActionItem] = [
+    ActionItem(icon: "arrow.up.square", text: "Open Trunk"),
+    ActionItem(icon: "fanblades", text: "Fan Off"),
+    ActionItem(icon: "person.fill.viewfinder", text: "Summon"),
+]
