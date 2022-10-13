@@ -226,8 +226,8 @@ struct AllSettings: View {
     var body: some View {
         VStack {
             CategoryHeader(title: "All Settings")
-            LazyVGrid(columns: [GridItem(.fixed(170)), GridItem(.fixed(170))]) {
-                SettingsBlock(icon: "car.fill", title: "Controls")
+            LazyVGrid(columns: [GridItem(.fixed(180)), GridItem(.fixed(180))]) {
+                SettingsBlock(icon: "car.fill", title: "Controls", subtitle: "Car locked")
                 SettingsBlock(icon: "fanblades.fill", title: "Climate",
                               subtitle: "INTERIOR 68° F",
                               backgroundColor: Color("Blue"))
@@ -250,20 +250,28 @@ struct SettingsBlock: View {
     var backgroundColor: Color = .white.opacity(0.05)
     
     var body: some View {
-        HStack {
+        HStack(alignment: .center, spacing: 2) {
             Image(systemName: icon)
             VStack(alignment: .leading) {
+                // title
                 Text(title)
-                if !subtitle.isEmpty {
-                    Text(subtitle)
-                }
+                    .fontWeight(.semibold)
+                    .fixedSize(horizontal: true, vertical: false)
+                    .font(.system(size: 16, weight: .medium, design: .default))
+                // subtitle
+                Text(subtitle.uppercased())
+                    .font(.system(size: 8, weight: .medium, design: .default))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .lineLimit(1)
             }
+            .padding(.leading, 5)
             Spacer()
             Image(systemName: "chevron.right")
         }
-        .padding()
+        .padding(20)
         .background(backgroundColor)
         .clipShape(RoundedRectangle(cornerRadius: 16))
-        .overlay(RoundedRectangle(cornerRadius: 16).stroke(.white.opacity(0.1)))
+        .overlay(RoundedRectangle(cornerRadius: 16).stroke(.white.opacity(0.1),
+                                                           lineWidth: 0.5))
     }
 }
