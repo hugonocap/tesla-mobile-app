@@ -17,13 +17,12 @@ struct ContentView: View {
                     CustomDivider()
                     CarSection()
                     CustomDivider()
-//                    CategoryView(title: "Quick shortcuts", showEdit: true, actionItems: quickShortcuts)
-//                    CustomDivider()
-//                    CustomDivider()
-//                    CategoryView(title: "Recent actions", showEdit: false, actionItems: recentActions)
-//                    CustomDivider()
+                    CategoryView(title: "Quick shortcuts", showEdit: true, actionItems: quickShortcuts)
+                    CustomDivider()
+                    CategoryView(title: "Recent actions", showEdit: false, actionItems: recentActions)
+                    CustomDivider()
                     AllSettings()
-                    
+                    ReorderButton()
                 }.padding()
             }
             // voice command button
@@ -110,7 +109,7 @@ struct CustomDivider: View {
     var body: some View {
         Rectangle()
             .frame(maxWidth: .infinity)
-            .frame(height: 0.25)
+            .frame(height: 0.30)
             .background(.white)
             .opacity(0.1)
     }
@@ -268,10 +267,25 @@ struct SettingsBlock: View {
             Spacer()
             Image(systemName: "chevron.right")
         }
-        .padding(20)
+        .padding(19)
         .background(backgroundColor)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .overlay(RoundedRectangle(cornerRadius: 16).stroke(.white.opacity(0.1),
                                                            lineWidth: 0.5))
+    }
+}
+
+struct ReorderButton: View {
+    var body: some View {
+        Button(action: {}) {
+            Text("Reorder Groups")
+                .font(.caption)
+                .padding(.vertical, 8)
+                .padding(.horizontal, 14)
+                .background(.white.opacity(0.05))
+                .clipShape(Capsule())
+                .overlay(RoundedRectangle(cornerRadius: 16).stroke(.white.opacity(0.1),
+                                                                   lineWidth: 0.5))
+        }
     }
 }
