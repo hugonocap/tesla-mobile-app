@@ -35,9 +35,7 @@ struct CarControlsView: View {
                 }
                 CarLockButton()
                 CustomDivider()
-                CarControlsButtonsFirstRow()
-                CarControlsButtonsSecondRow()
-                CustomDivider()
+                CarControlButtons()
             }
             .padding()
         }
@@ -70,28 +68,25 @@ struct CarLockButton: View {
     }
 }
 
-struct CarControlsButtonsFirstRow: View {
+struct CarControlButtons: View {
     var body: some View {
-        HStack {
-            Spacer()
-            ActionButton(item: carControls[0])
-            Spacer()
-            ActionButton(item: carControls[1])
-            Spacer()
-            ActionButton(item: carControls[2])
-            Spacer()
-        }
-    }
-}
-
-struct CarControlsButtonsSecondRow: View {
-    var body: some View {
-        HStack {
-            Spacer()
-            ActionButton(item: carControls[3])
-            Spacer()
-            ActionButton(item: carControls[4])
-            Spacer()
+        VStack(spacing: 20) {
+            HStack {
+                Spacer()
+                ActionButton(item: carControls[0])
+                Spacer()
+                ActionButton(item: carControls[1])
+                Spacer()
+                ActionButton(item: carControls[2])
+                Spacer()
+            }
+            HStack {
+                Spacer()
+                ActionButton(item: carControls[3])
+                Spacer()
+                ActionButton(item: carControls[4])
+                Spacer()
+            }
         }
     }
 }
