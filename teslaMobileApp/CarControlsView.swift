@@ -76,18 +76,28 @@ struct CarControlButtons: View {
         VStack(spacing: 20) {
             HStack {
                 Spacer()
-                ActionButton(item: carControls[0])
+                Button(action: {}) {
+                    ActionButton(item: carControls[0])
+                }
                 Spacer()
-                ActionButton(item: carControls[1])
+                Button(action: {}) {
+                    ActionButton(item: carControls[1])
+                }
                 Spacer()
-                ActionButton(item: carControls[2])
+                Button(action: {}) {
+                    ActionButton(item: carControls[2])
+                }
                 Spacer()
             }
             HStack {
                 Spacer()
-                ActionButton(item: carControls[3])
+                Button(action: {}) {
+                    ActionButton(item: carControls[3])
+                }
                 Spacer()
-                ActionButton(item: carControls[4])
+                Button(action: {}) {
+                    ActionButton(item: carControls[4])
+                }
                 Spacer()
             }
         }
