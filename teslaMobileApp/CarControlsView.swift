@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+let carControls: [ActionItem] = [
+    ActionItem(icon: "flashlight.on.fill", text: "Flash"),
+    ActionItem(icon: "speaker.wave.3.fill", text: "Honk"),
+    ActionItem(icon: "key.fill", text: "Start"),
+    ActionItem(icon: "arrow.up.bin", text: "Front Trunk"),
+    ActionItem(icon: "arrow.up.square", text: "Trunk"),
+]
+
 struct CarControlsView: View {
     
     @Environment(\.presentationMode) var presentationMode
@@ -25,8 +33,12 @@ struct CarControlsView: View {
                         .font(.title)
                         .fontWeight(.semibold)
                 }
-                CustomDivider()
                 CarLockButton()
+                CustomDivider()
+                HStack {
+                    Spacer()
+                    ActionButton(item: carControls[0])
+                }
             }
             .padding()
         }
@@ -46,13 +58,15 @@ struct CarControlsView_Previews: PreviewProvider {
 // car lock button struct
 struct CarLockButton: View {
     var body: some View {
-        Label("Unlock Car", systemImage: "lock.fill")
-            .font(.system(size: 16, weight: .medium, design: .default))
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(.white.opacity(0.05))
-            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-            .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .stroke(.white.opacity(0.1), lineWidth: 0.5))
+        Button(action: {}) {
+            Label("Unlock Car", systemImage: "lock.fill")
+                .font(.system(size: 16, weight: .medium, design: .default))
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(.white.opacity(0.05))
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .stroke(.white.opacity(0.1), lineWidth: 0.5))
+        }
     }
 }

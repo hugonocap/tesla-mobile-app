@@ -43,7 +43,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-
 // voice button struct
 struct VoiceCommandButton: View {
     var body: some View {
@@ -144,7 +143,7 @@ struct CarSection: View {
         }
     }
 }
-
+// category header struct
 struct CategoryHeader: View {
     
     var title: String
@@ -169,6 +168,7 @@ struct CategoryHeader: View {
         }
     }
 }
+// category view struct
 struct CategoryView: View {
         
     var title: String
@@ -190,8 +190,7 @@ struct CategoryView: View {
         }
     }
 }
-
-
+// action button struct
 struct ActionButton: View {
     
     var item: ActionItem
@@ -206,25 +205,25 @@ struct ActionButton: View {
         }
     }
 }
-
+// action item sruct
 struct ActionItem: Hashable {
     var icon: String
     var text: String
 }
-
+// action item 1
 let quickShortcuts: [ActionItem] = [
     ActionItem(icon: "bolt.fill", text: "Charging"),
     ActionItem(icon: "fanblades.fill", text: "Fan On"),
     ActionItem(icon: "music.note", text: "Media controls"),
     ActionItem(icon: "bolt.car", text: "Close Charge Port")
 ]
-
+// action item 2
 let recentActions: [ActionItem] = [
     ActionItem(icon: "arrow.up.square", text: "Open Trunk"),
     ActionItem(icon: "fanblades", text: "Fan Off"),
     ActionItem(icon: "person.fill.viewfinder", text: "Summon"),
 ]
-
+// all settings struct
 struct AllSettings: View {
     var body: some View {
         VStack {
@@ -246,7 +245,7 @@ struct AllSettings: View {
         }
     }
 }
-
+// settings block struct
 struct SettingsBlock: View {
     
     var icon: String
@@ -280,7 +279,7 @@ struct SettingsBlock: View {
                                                            lineWidth: 0.5))
     }
 }
-
+// reorder button struct
 struct ReorderButton: View {
     var body: some View {
         Button(action: {}) {
