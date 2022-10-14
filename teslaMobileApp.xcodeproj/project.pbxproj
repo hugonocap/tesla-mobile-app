@@ -11,6 +11,7 @@
 		D98ACFE228F5EF0100DF2C14 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98ACFE128F5EF0100DF2C14 /* ContentView.swift */; };
 		D98ACFE428F5EF0200DF2C14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D98ACFE328F5EF0200DF2C14 /* Assets.xcassets */; };
 		D98ACFE728F5EF0200DF2C14 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D98ACFE628F5EF0200DF2C14 /* Preview Assets.xcassets */; };
+		D9DC4A7728F9CF9700FCD698 /* CarControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DC4A7628F9CF9700FCD698 /* CarControlsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		D98ACFE128F5EF0100DF2C14 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D98ACFE328F5EF0200DF2C14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D98ACFE628F5EF0200DF2C14 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D9DC4A7628F9CF9700FCD698 /* CarControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarControlsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		D98ACFDE28F5EF0100DF2C14 /* teslaMobileApp */ = {
 			isa = PBXGroup;
 			children = (
+				D9DC4A7628F9CF9700FCD698 /* CarControlsView.swift */,
 				D98ACFDF28F5EF0100DF2C14 /* teslaMobileAppApp.swift */,
 				D98ACFE128F5EF0100DF2C14 /* ContentView.swift */,
 				D98ACFE328F5EF0200DF2C14 /* Assets.xcassets */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D98ACFE228F5EF0100DF2C14 /* ContentView.swift in Sources */,
+				D9DC4A7728F9CF9700FCD698 /* CarControlsView.swift in Sources */,
 				D98ACFE028F5EF0100DF2C14 /* teslaMobileAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

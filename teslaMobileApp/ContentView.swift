@@ -9,28 +9,32 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ZStack {
-            ScrollView{
-                VStack(spacing: 20){
-                    // home header
-                    HomeHeader()
-                    CustomDivider()
-                    CarSection()
-                    CustomDivider()
-                    CategoryView(title: "Quick shortcuts", showEdit: true, actionItems: quickShortcuts)
-                    CustomDivider()
-                    CategoryView(title: "Recent actions", showEdit: false, actionItems: recentActions)
-                    CustomDivider()
-                    AllSettings()
-                    ReorderButton()
-                }.padding()
+        NavigationView {
+            ZStack {
+                ScrollView {
+                    VStack(spacing: 20){
+                        // home header
+                        HomeHeader()
+                        CustomDivider()
+                        CarSection()
+                        CustomDivider()
+                        CategoryView(title: "Quick shortcuts", showEdit: true, actionItems: quickShortcuts)
+                        CustomDivider()
+                        CategoryView(title: "Recent actions", showEdit: false, actionItems: recentActions)
+                        CustomDivider()
+                        AllSettings()
+                        ReorderButton()
+                    }.padding()
+                }
+                // voice command button
+                VoiceCommandButton()
             }
-            // voice command button
-            VoiceCommandButton()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color("DarkGray"))
+            .foregroundColor(.white)
+            .navigationTitle("Mach Five")
+            .navigationBarHidden(true)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color("DarkGray"))
-        .foregroundColor(.white)
     }
 }
 
@@ -226,7 +230,9 @@ struct AllSettings: View {
         VStack {
             CategoryHeader(title: "All Settings")
             LazyVGrid(columns: [GridItem(.fixed(180)), GridItem(.fixed(180))]) {
-                SettingsBlock(icon: "car.fill", title: "Controls", subtitle: "Car locked")
+                NavigationLink(destination: CarControlsView()) {
+                    SettingsBlock(icon: "car.fill", title: "Controls", subtitle: "Car locked")
+                }
                 SettingsBlock(icon: "fanblades.fill", title: "Climate",
                               subtitle: "INTERIOR 68° F",
                               backgroundColor: Color("Blue"))
