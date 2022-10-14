@@ -35,10 +35,9 @@ struct CarControlsView: View {
                 }
                 CarLockButton()
                 CustomDivider()
-                HStack {
-                    Spacer()
-                    ActionButton(item: carControls[0])
-                }
+                CarControlsButtonsFirstRow()
+                CarControlsButtonsSecondRow()
+                CustomDivider()
             }
             .padding()
         }
@@ -67,6 +66,32 @@ struct CarLockButton: View {
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                 .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
                     .stroke(.white.opacity(0.1), lineWidth: 0.5))
+        }
+    }
+}
+
+struct CarControlsButtonsFirstRow: View {
+    var body: some View {
+        HStack {
+            Spacer()
+            ActionButton(item: carControls[0])
+            Spacer()
+            ActionButton(item: carControls[1])
+            Spacer()
+            ActionButton(item: carControls[2])
+            Spacer()
+        }
+    }
+}
+
+struct CarControlsButtonsSecondRow: View {
+    var body: some View {
+        HStack {
+            Spacer()
+            ActionButton(item: carControls[3])
+            Spacer()
+            ActionButton(item: carControls[4])
+            Spacer()
         }
     }
 }
