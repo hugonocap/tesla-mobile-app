@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+// action items
 let carControls: [ActionItem] = [
     ActionItem(icon: "flashlight.on.fill", text: "Flash"),
     ActionItem(icon: "speaker.wave.3.fill", text: "Honk"),
@@ -23,6 +23,7 @@ struct CarControlsView: View {
         ScrollView{
             VStack(spacing: 20) {
                 VStack(alignment: .leading, spacing: 10) {
+                    // back button
                     HStack {
                         Button(action: {presentationMode.wrappedValue.dismiss()}) {
                             GeneralButton(icon: "chevron.left")
@@ -36,6 +37,8 @@ struct CarControlsView: View {
                 CarLockButton()
                 CustomDivider()
                 CarControlButtons()
+                CustomDivider()
+                ValetModeFooter()
             }
             .padding()
         }
@@ -67,7 +70,7 @@ struct CarLockButton: View {
         }
     }
 }
-
+// body buttons struct
 struct CarControlButtons: View {
     var body: some View {
         VStack(spacing: 20) {
@@ -87,6 +90,27 @@ struct CarControlButtons: View {
                 ActionButton(item: carControls[4])
                 Spacer()
             }
+        }
+        .padding(10)
+    }
+}
+// footer struct
+struct ValetModeFooter: View {
+    
+    @State private var toggleValet: Bool = false
+    
+    var body: some View {
+        HStack {
+            Text("Valet Mode")
+                .font(.title2)
+                .fontWeight(.medium)
+            Spacer()
+            Toggle("", isOn: $toggleValet)
+                .toggleStyle(SwitchToggleStyle(tint: Color("Blue")))
+        }
+        if toggleValet {
+            Text("Valet Mode is on!")
+                .font(.caption)
         }
     }
 }
