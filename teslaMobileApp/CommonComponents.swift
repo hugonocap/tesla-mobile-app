@@ -54,7 +54,7 @@ struct ActionItem: Hashable {
 // button struct
 struct FullButton: View {
     
-    var text: String
+    var text: String = ""
     var icon: String = ""
     var hasIcon: Bool = false
     
@@ -62,6 +62,8 @@ struct FullButton: View {
         
         if icon.isEmpty {
             textButton
+        } else if text.isEmpty {
+            iconButton
         } else {
             iconButton
         }

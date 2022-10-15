@@ -193,8 +193,11 @@ struct AllSettings: View {
                 SettingsBlock(icon: "fanblades.fill", title: "Climate",
                               subtitle: "INTERIOR 68° F",
                               backgroundColor: Color("Blue"))
-                SettingsBlock(icon: "location.fill", title: "Location",
-                              subtitle: "BEVERLY HILLS")
+                NavigationLink(destination: LocationView()) {
+                    SettingsBlock(icon: "location.fill",
+                        title: "Location",
+                        subtitle: "BEVERLY HILLS")
+                }
                 SettingsBlock(icon: "checkerboard.shield", title: "Privacy",
                               subtitle: "0 EVENTS DETECTED")
                 SettingsBlock(icon: "sparkles", title: "Upgrades",

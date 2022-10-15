@@ -17,6 +17,8 @@ struct CarLocation: Identifiable {
     }
 }
 
+
+
 let carLocations = [CarLocation(latitude: 34.070871, longitude: -118.403738)]
 
 struct LocationView: View {
@@ -33,7 +35,12 @@ struct LocationView: View {
                 annotationContent: { location in
                 MapAnnotation(coordinate: location.coordinate, content: {CarPin()})
             })
-                
+            
+            CarLocationPanel()
+            
+            LinearGradient(gradient:Gradient(colors: [Color("DarkGray"), Color.clear, Color.clear]), startPoint: .top, endPoint: .bottom)
+                .allowsHitTesting(false)
+            
             VStack(alignment: .leading, spacing: 10) {
                 // header
                 HStack {
@@ -72,6 +79,7 @@ struct CarPin: View {
                .fontWeight(.medium)
                .padding(.horizontal, 8)
                .padding(.vertical, 4)
+               .background(.black)
                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 8, style: .continuous))
                .overlay(RoundedRectangle(cornerRadius: 8, style: .continuous).stroke(.black.opacity(0.1), lineWidth: 1))
        }
@@ -81,5 +89,53 @@ struct CarPin: View {
 struct LocationView_Previews: PreviewProvider {
     static var previews: some View {
         LocationView()
+    }
+}
+
+struct CarLocationPanel : View {
+    var body: some View {
+        VStack {
+            Spacer()
+            VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Location")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    CustomDivider()
+                    Label("Rodeo Drive 468 N, Beverly Hills, CA, 90210",
+                          systemImage: "location.fill")
+                    .font(.footnote)
+                    .opacity(0.5)
+                }
+                VStack(alignment: .leading, spacing: 10) {
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("Summon")
+                            .font(.title3 )
+                            .fontWeight(.semibold)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("Press and hold controls to move vehicle")
+                        .font(.footnote)
+                        .opacity(0.5)
+                    }
+                }
+                CustomDivider()
+                Button(action: {}) {
+                    FullButton(text: "Go to Target")
+                }
+                HStack {
+                    Button(action: {}) {
+                        FullButton(icon: "arrow.up")
+                    }
+                    Button(action: {}) {
+                        FullButton(icon: "arrow.down")
+                    }
+                }
+            }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color("DarkGray"))
+            .foregroundColor(.white)
+        }
     }
 }
