@@ -12,10 +12,10 @@ struct LocationView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        ScrollView{
-            VStack(spacing: 20) {
+        ZStack {
+            ScrollView{
                 VStack(alignment: .leading, spacing: 10) {
-                    // header 
+                    // header
                     HStack {
                         // back button
                         Button(action: {presentationMode.wrappedValue.dismiss()}) {
@@ -28,15 +28,15 @@ struct LocationView: View {
                         }
                     }
                 }
-                
+                .padding()
+                Spacer()
             }
-            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color("DarkGray"))
+            .foregroundColor(.white)
+            .navigationTitle("Mach Five")
+            .navigationBarHidden(true)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color("DarkGray"))
-        .foregroundColor(.white)
-        .navigationTitle("Mach Five")
-        .navigationBarHidden(true)
     }
 }
 

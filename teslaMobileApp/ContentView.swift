@@ -148,12 +148,12 @@ struct CategoryHeader: View {
 }
 // category view struct
 struct CategoryView: View {
-        
+    
     var title: String
     var showEdit: Bool
     
     var actionItems: [ActionItem]
-        
+    
     var body: some View {
         VStack {
             CategoryHeader(title: title, showEdit: true)
