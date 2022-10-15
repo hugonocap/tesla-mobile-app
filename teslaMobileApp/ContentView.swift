@@ -194,7 +194,7 @@ struct AllSettings: View {
                               subtitle: "INTERIOR 68° F",
                               backgroundColor: Color("Blue"))
                 SettingsBlock(icon: "location.fill", title: "Location",
-                              subtitle: "EMPIRE STATE BUILDING")
+                              subtitle: "BEVERLY HILLS")
                 SettingsBlock(icon: "checkerboard.shield", title: "Privacy",
                               subtitle: "0 EVENTS DETECTED")
                 SettingsBlock(icon: "sparkles", title: "Upgrades",
