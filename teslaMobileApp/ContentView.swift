@@ -95,28 +95,6 @@ struct HomeHeader: View {
         .padding()
     }
 }
-// general buttons struct
-struct GeneralButton: View {
-    var icon: String
-    var body: some View {
-        Image(systemName: icon)
-            .imageScale(.large)
-            .frame(width: 44, height: 44)
-            .background(.white.opacity(0.05))
-            .clipShape(Circle())
-            .overlay(Circle().stroke(.white.opacity(0.1), lineWidth: 0.5 ))
-    }
-}
-// custom divider struct
-struct CustomDivider: View {
-    var body: some View {
-        Rectangle()
-            .frame(maxWidth: .infinity)
-            .frame(height: 0.30)
-            .background(.white)
-            .opacity(0.1)
-    }
-}
 // car section struct
 struct CarSection: View {
     var body: some View {
@@ -189,26 +167,6 @@ struct CategoryView: View {
             
         }
     }
-}
-// action button struct
-struct ActionButton: View {
-    
-    var item: ActionItem
-    
-    var body: some View {
-        VStack(alignment: .center) {
-            GeneralButton(icon: item.icon)
-            Text(item.text)
-                .font(.system(size: 12, weight: .semibold, design: .default))
-                .frame(width: 72)
-                .multilineTextAlignment(.center)
-        }
-    }
-}
-// action item sruct
-struct ActionItem: Hashable {
-    var icon: String
-    var text: String
 }
 // action item 1
 let quickShortcuts: [ActionItem] = [
