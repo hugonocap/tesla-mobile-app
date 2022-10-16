@@ -57,8 +57,11 @@ struct VoiceCommandView: View {
     var text: String
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             Spacer()
+            Image("Wave")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
             HStack(alignment: .bottom, spacing: 20) {
                 HStack {
                     Image(systemName: "mic.fill")
