@@ -35,7 +35,6 @@ struct LocationView: View {
                 annotationContent: { location in
                 MapAnnotation(coordinate: location.coordinate, content: {CarPin()})
             })
-            
             CarLocationPanel()
             
             LinearGradient(gradient:Gradient(colors: [Color("DarkGray"), Color.clear, Color.clear]), startPoint: .top, endPoint: .bottom)
