@@ -10,9 +10,9 @@ import SwiftUI
 struct ActionComponentsView: View {
     var body: some View {
 //        ActionNotifications(open: .constant(true), icon: "fanblades.fill", text: "Turning on the fan...")
-//        VoiceCommandView(open: .constant(true), text: "\"Go to Santa Monica\"")
+        VoiceCommandView(open: .constant(true), text: "\"Go to Santa Monica\"")
         //MediaPlayer()
-        ChargingView()
+       // ChargingView()
     }
 }
 
@@ -72,9 +72,14 @@ struct VoiceCommandView: View {
                         .font(.title3)
                         .fontWeight(.semibold)
                 }
-                .padding(.bottom, 35)
+                .padding(.bottom, 37)
+                .padding(.leading, 35)
                 Spacer()
-                Button(action: {}) {
+                Button(action: {
+                    withAnimation {
+                        open = false 
+                    }
+                }) {
                     Image(systemName: "xmark")
                         .font(.system(size: 24, weight: .semibold, design: .default))
                         .frame(width: 64, height: 64)
@@ -84,8 +89,9 @@ struct VoiceCommandView: View {
                         .padding()
                         .shadow(radius: 10)
                 }
+                
             }
-            .padding()
+            
             .background(Color("Green"))
             .foregroundColor(Color("DarkGray"))
         }

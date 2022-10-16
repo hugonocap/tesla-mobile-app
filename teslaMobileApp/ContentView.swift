@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var openVoiceCommand = false
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -27,7 +30,23 @@ struct ContentView: View {
                     }.padding()
                 }
                 // voice command button
-                VoiceCommandButton()
+                VoiceCommandButton(open: $openVoiceCommand)
+                
+                if (openVoiceCommand) {
+                    Color.black.opacity(0.5)
+                        .ignoresSafeArea()
+                        .transition(.opacity)
+                        .onTapGesture {
+                            withAnimation {
+                                openVoiceCommand = false
+                            }
+                        }
+                }
+                
+                if openVoiceCommand {
+                    VoiceCommandView(open: $openVoiceCommand, text: "take me to olive garden")
+                        .zIndex(1)
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color("DarkGray"))
@@ -45,21 +64,28 @@ struct ContentView_Previews: PreviewProvider {
 }
 // voice button struct
 struct VoiceCommandButton: View {
+    
+    @Binding var open: Bool
+    
     var body: some View {
         VStack {
             Spacer()
             HStack {
                 Spacer()
-                Image(systemName: "mic.fill")
-                    .font(.system(size: 24,
-                                  weight: .semibold,
-                                  design: .default))
-                    .frame(width: 64, height: 64)
-                    .background(Color("Green"))
-                    .foregroundColor(Color("DarkGray"))
-                    .clipShape(Circle())
-                    .padding()
+                Button(action: {
+                    withAnimation {
+                        open = true
+                    }
+                }) {
+                    Image(systemName: "mic.fill")
+                        .font(.system(size: 24, weight: .semibold, design: .default))
+                        .frame(width: 64, height: 64)
+                        .background(Color("Green"))
+                        .foregroundColor(Color("DarkGray"))
+                        .clipShape(Circle())
+                        .padding()
                     .shadow(radius: 10)
+                }
             }
         }
         .edgesIgnoringSafeArea(.all)
