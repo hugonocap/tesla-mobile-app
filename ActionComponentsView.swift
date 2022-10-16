@@ -135,12 +135,49 @@ struct MediaPlayer: View {
                             .offset(x: 182)
                     }
                 }
+                CustomDivider()
+                HStack {
+                    HStack(alignment: .center, spacing: 15) {
+                        Button(action: {}) {
+                            Image(systemName: "backward.fill")
+                                .font(.system(size: 20, weight: .semibold, design: .default))
+                                .opacity(0.5)
+                        }
+                        Button(action: {}) {
+                            Image(systemName: "pause.fill")
+                                .font(.system(size: 20, weight: .semibold, design: .default))
+                        }
+                        Button(action: {}) {
+                            Image(systemName: "forward.fill")
+                                .font(.system(size: 20, weight: .semibold, design: .default))
+                                .opacity(0.5)
+                        }
+                    }
+                    Spacer()
+                    HStack(alignment: .center, spacing: 15) {
+                        Button(action: {}) {
+                            Image(systemName: "minus")
+                                .font(.system(size: 20, weight: .semibold, design: .default))
+                                .opacity(0.5)
+                        }
+                        Button(action: {}) {
+                            Image(systemName: "speaker.wave.2.fill")
+                                .font(.system(size: 20, weight: .semibold, design: .default))
+                        }
+                        Button(action: {}) {
+                            Image(systemName: "plus")
+                                .font(.system(size: 20, weight: .semibold, design: .default))
+                                .opacity(0.5)
+                        }
+                    }
+                }
             }
             .padding(.bottom , 20)
             .padding()
             .frame(maxWidth: .infinity)
             .background(Color("DarkGray"))
-        .foregroundColor(.white)
+            .foregroundColor(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 16))
         }
         .edgesIgnoringSafeArea(.bottom)
     }
