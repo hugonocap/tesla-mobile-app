@@ -10,7 +10,8 @@ import SwiftUI
 struct ActionComponentsView: View {
     var body: some View {
 //        ActionNotifications(open: .constant(true), icon: "fanblades.fill", text: "Turning on the fan...")
-        VoiceCommandView(open: .constant(true), text: "\"Go to Santa Monica\"")
+//        VoiceCommandView(open: .constant(true), text: "\"Go to Santa Monica\"")
+        MediaPlayer()
     }
 }
 
@@ -19,7 +20,7 @@ struct ActionComponentsView_Previews: PreviewProvider {
         ActionComponentsView()
     }
 }
-// notification struct
+// notifications struct
 struct ActionNotifications: View {
     
     @Binding var open: Bool
@@ -50,7 +51,7 @@ struct ActionNotifications: View {
         .edgesIgnoringSafeArea(.bottom)
     }
 }
-
+// voice command screen struct
 struct VoiceCommandView: View {
     
     @Binding var open: Bool
@@ -86,6 +87,60 @@ struct VoiceCommandView: View {
             .padding()
             .background(Color("Green"))
             .foregroundColor(Color("DarkGray"))
+        }
+        .edgesIgnoringSafeArea(.bottom)
+    }
+}
+// media player struct
+struct MediaPlayer: View {
+    var body: some View {
+        VStack {
+            Spacer()
+            VStack(spacing: 20) {
+                HStack(alignment: .center, spacing: 10) {
+                    Image("AlbumCover")
+                        .resizable()
+                        .frame(width: 64, height: 64)
+                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("Ya Ya")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                        Text("Yeat - Up 2 Me")
+                            .font(.footnote)
+                            .fontWeight(.medium )
+                            .opacity(0.5)
+                    }
+                    Spacer()
+                }
+                VStack(spacing: 5) {
+                    HStack {
+                        Text("0:58")
+                        Spacer()
+                        Text("-1:20")
+                    }
+                    .font(.system(size: 12, weight: .medium, design: .monospaced))
+                    .opacity(00.5)
+                    ZStack(alignment: .leading) {
+                        Color.white.opacity(0.25)
+                            .frame(height: 6)
+                            .clipShape(Capsule())
+                        Color("Green")
+                            .frame(maxWidth: 190)
+                            .frame(height: 6)
+                            .clipShape(Capsule())
+                        Color.white
+                            .frame(width: 16, height: 16)
+                            .clipShape(Circle())
+                            .offset(x: 182)
+                    }
+                }
+            }
+            .padding(.bottom , 20)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color("DarkGray"))
+        .foregroundColor(.white)
         }
         .edgesIgnoringSafeArea(.bottom)
     }
