@@ -10,6 +10,12 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var openVoiceCommand = false
+    @State private var openMediaControls = false
+    @State private var openCharging = false
+    
+    @State private var actionText = ""
+    @State private var actionIcon = ""
+    @State private var openAction = false
     
     var body: some View {
         NavigationView {
@@ -19,7 +25,7 @@ struct ContentView: View {
                         // home header
                         HomeHeader()
                         CustomDivider()
-                        CarSection()
+                        CarSection(openCharging: $openCharging)
                         CustomDivider()
                         CategoryView(title: "Quick shortcuts", showEdit: true, actionItems: quickShortcuts)
                         CustomDivider()
@@ -32,13 +38,14 @@ struct ContentView: View {
                 // voice command button
                 VoiceCommandButton(open: $openVoiceCommand)
                 
-                if (openVoiceCommand) {
+                if (openVoiceCommand || openCharging) {
                     Color.black.opacity(0.5)
                         .ignoresSafeArea()
                         .transition(.opacity)
                         .onTapGesture {
                             withAnimation {
                                 openVoiceCommand = false
+                                openCharging = false
                             }
                         }
                 }
@@ -47,6 +54,14 @@ struct ContentView: View {
                     VoiceCommandView(open: $openVoiceCommand, text: "take me to olive garden")
                         .zIndex(1)
                 }
+                
+                
+                if openCharging {
+                    ChargingView()
+                        .transition(.move(edge: .bottom))
+                        .zIndex(1)
+                }
+                
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color("DarkGray"))
@@ -123,15 +138,19 @@ struct HomeHeader: View {
 }
 // car section struct
 struct CarSection: View {
+    
+    @Binding var openCharging: Bool
+    
     var body: some View {
         VStack(spacing: 10) {
             HStack(alignment: .center) {
-                HStack {
-                    Image(systemName: "battery.75")
-                    Text("237 miles".uppercased())
+                Button(action: {
+                    openCharging = true
+                }) {
+                    Label("237 miles".uppercased(), systemImage: "battery.75")
+                        .font(.system(size: 14, weight: .semibold, design: .rounded))
+                        .foregroundColor(Color("Green"))
                 }
-                .foregroundColor(Color("Green"))
-                .font(.system(size: 14, weight: .semibold, design: .rounded))
                 Spacer()
                 VStack(alignment: .trailing) {
                     Text("Parked")
