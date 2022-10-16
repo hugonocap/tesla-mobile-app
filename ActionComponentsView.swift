@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ActionComponentsView: View {
     var body: some View {
-        ActionNotifications(open: .constant(true), icon: "fanblades.fill", text: "Turning on the fan...")
+//        ActionNotifications(open: .constant(true), icon: "fanblades.fill", text: "Turning on the fan...")
+        VoiceCommandView(open: .constant(true), text: "\"Go to Santa Monica\"")
     }
 }
 
@@ -18,7 +19,7 @@ struct ActionComponentsView_Previews: PreviewProvider {
         ActionComponentsView()
     }
 }
-// notification
+// notification struct
 struct ActionNotifications: View {
     
     @Binding var open: Bool
@@ -50,3 +51,39 @@ struct ActionNotifications: View {
     }
 }
 
+struct VoiceCommandView: View {
+    
+    @Binding var open: Bool
+    var text: String
+    
+    var body: some View {
+        VStack {
+            Spacer()
+            HStack(alignment: .bottom, spacing: 20) {
+                HStack {
+                    Image(systemName: "mic.fill")
+                        .font(.system(size: 24, weight: .semibold, design: .default))
+                    Text(text)
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                }
+                .padding(.bottom, 35)
+                Spacer()
+                Button(action: {}) {
+                    Image(systemName: "xmark")
+                        .font(.system(size: 24, weight: .semibold, design: .default))
+                        .frame(width: 64, height: 64)
+                        .background(Color("DarkGray"))
+                        .foregroundColor(.white)
+                        .clipShape(Circle())
+                        .padding()
+                        .shadow(radius: 10)
+                }
+            }
+            .padding()
+            .background(Color("Green"))
+            .foregroundColor(Color("DarkGray"))
+        }
+        .edgesIgnoringSafeArea(.bottom)
+    }
+}
