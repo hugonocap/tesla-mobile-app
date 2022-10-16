@@ -11,7 +11,8 @@ struct ActionComponentsView: View {
     var body: some View {
 //        ActionNotifications(open: .constant(true), icon: "fanblades.fill", text: "Turning on the fan...")
 //        VoiceCommandView(open: .constant(true), text: "\"Go to Santa Monica\"")
-        MediaPlayer()
+        //MediaPlayer()
+        ChargingView()
     }
 }
 
@@ -171,6 +172,64 @@ struct MediaPlayer: View {
                         }
                     }
                 }
+            }
+            .padding(.bottom , 20)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color("DarkGray"))
+            .foregroundColor(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+        }
+        .edgesIgnoringSafeArea(.bottom)
+    }
+}
+
+struct ChargingView: View {
+    var body: some View {
+        VStack {
+            Spacer()
+            VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing:10) {
+                    Label("237 miles", systemImage: "bolt.fill")
+                        .font(.system(size: 24, weight: .semibold, design: .default))
+                    .foregroundColor(Color("Green"))
+                    Text("3h 55m remain – 32/3A – 30 mi/hour")
+                        .fontWeight(.medium)
+                }
+                
+                
+                VStack(alignment: .leading, spacing: 5) {
+                
+                    Text("Charge Limit: 315 miles")
+                        .fontWeight(.semibold)
+                        .font(.system(size: 15, weight: .medium, design: .default))
+                        .opacity(00.5)
+                    
+                    ZStack(alignment: .leading) {
+                        Color.white.opacity(0.25)
+                            .frame(height: 6)
+                            .clipShape(Capsule())
+                        Color("Green")
+                            .frame(maxWidth: 300)
+                            .frame(height: 6)
+                            .clipShape(Capsule())
+                        Color.white
+                            .frame(width: 16, height: 16)
+                            .clipShape(Circle())
+                            .offset(x: 340)
+                    }
+                }
+                CustomDivider()
+                Button(action: {}) {
+                    Text("Stop Charging")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 14)
+                        .background(Color("Red"))
+                        .clipShape(Capsule())
+                }
+                .frame(maxWidth: .infinity)
             }
             .padding(.bottom , 20)
             .padding()
