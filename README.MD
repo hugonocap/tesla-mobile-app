@@ -5,6 +5,8 @@ In this application you will be able to control your Tesla! You can turn on the 
 I Used Swift, SwiftUI and MapKit Framework to create this app.
 For now app supports only color mode.
 
+![damn2](https://user-images.githubusercontent.com/94106586/205520968-a8023f55-2159-47c7-9c23-cabcf66daa8a.png)
+
 ## Technologies
 Swift\
 SwiftUI\
